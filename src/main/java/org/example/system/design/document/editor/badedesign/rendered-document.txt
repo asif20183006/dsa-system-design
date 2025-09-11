@@ -1,0 +1,3 @@
+Hi this is my text
+Image: my-image.jpg
+bye
