@@ -1,5 +1,7 @@
 package org.example.array;
 
+import static org.example.sorting.QuickSort.swap;
+
 public class ArrayMedium {
     public static void sortZeroOneTwo1(int[] nums) {
 
@@ -41,10 +43,37 @@ public class ArrayMedium {
         }
 
     }
-    public static void main(String[] args) {
-        int []arr = new int[]{0, 0, 1, 1, 1};
 
-        sortZeroOneTwo1(arr);
+    public static void sortZeroOneTwoOptimal(int []nums) {
+
+        // all 0 will be 0 to low-1
+        // all 1 will be low to mid-1
+        // mid to high-1 unsorted
+        // all 2 high to n-1 will
+
+        int low=0,mid=0,high=nums.length-1;
+        while (mid<=high) {
+            if (nums[mid] == 0) {
+
+                swap(nums, low, mid);
+
+                low++;
+                mid++;
+            } else if (nums[mid] == 1) {
+                mid++;
+
+            } else {
+                swap(nums, mid, high);
+                high--;
+
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int []arr = new int[]{2,0, 0, 1, 1, 1};
+
+        sortZeroOneTwoOptimal(arr);
 
         for(int i: arr) {
             System.out.println(i);
