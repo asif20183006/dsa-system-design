@@ -46,10 +46,10 @@ public class ArrayMedium {
 
     public static void sortZeroOneTwoOptimal(int []nums) {
 
-        // all 0 will be 0 to low-1
-        // all 1 will be low to mid-1
+        // all 0s will be 0 to low-1
+        // all 1s will be low to mid-1
         // mid to high-1 unsorted
-        // all 2 high to n-1 will
+        // all 2s high to n-1 will
 
         int low=0,mid=0,high=nums.length-1;
         while (mid<=high) {
