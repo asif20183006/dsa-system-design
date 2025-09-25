@@ -1,5 +1,8 @@
 package org.example.array;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.example.sorting.QuickSort.swap;
 
 public class ArrayMedium {
@@ -70,13 +73,59 @@ public class ArrayMedium {
         }
     }
 
-    public static void main(String[] args) {
-        int []arr = new int[]{2,0, 0, 1, 1, 1};
 
-        sortZeroOneTwoOptimal(arr);
+    public static int majorityElement(int[] nums) {
 
-        for(int i: arr) {
-            System.out.println(i);
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int num: nums) {
+            Integer orDefault = map.getOrDefault(num, 0);
+            map.put(num, orDefault+1);
         }
+
+        int ans = 0;
+
+       for (Map.Entry<Integer, Integer> entry: map.entrySet()) {
+            if (entry.getValue() > nums.length/2) {
+                ans = entry.getKey();
+                break;
+            }
+        }
+
+
+        return ans;
+    }
+
+    public static int majorityElementOptimal(int []nums) {
+
+        // more's algorithm
+        // idea is one number always be greater that half of the size of array
+        // so if I will keep one number 1 side and all others numbers one side try to cut
+        // majority element then all other element will cut all the non majority element
+
+
+        int ans = 0;
+        int count = 0;
+
+        for (int num: nums) {
+            if (count == 0) {
+                ans = num;
+                count++;
+            } else if (num == ans) {
+                count++;
+
+            } else {
+                count--;
+            }
+        }
+
+        return ans;
+
+    }
+
+    public static void main(String[] args) {
+        int []arr = new int[]{2,2,1,1,1,2,2,1,1,3,3,3,3,3,3,3,3,3,2,2,2,3,3,3,2};
+        System.out.println(majorityElementOptimal(arr));
+
     }
 }

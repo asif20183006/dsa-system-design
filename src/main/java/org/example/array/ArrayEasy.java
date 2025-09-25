@@ -2,7 +2,7 @@ package org.example.array;
 
 import java.util.*;
 
-public class Array {
+public class ArrayEasy {
 
     public static int binarySearch(int []arr, int num) {
 
